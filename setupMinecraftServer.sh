@@ -47,16 +47,18 @@ wget $SERVERJARLINK -O /home/$USER/minecraft/server.jar
 
 # eula.txt
 echo "eula=true" >> /home/$USER/minecraft/eula.txt
+
 # server.properties
-echo "spawn-protection=0" >> /home/$USER/minecraft/server.properties
-echo "difficulty=normal" >> /home/$USER/minecraft/server.properties
-echo "enable-command-block=true" >> /home/$USER/minecraft/server.properties
-echo "server-port=42069" >> /home/$USER/minecraft/server.properties
-echo "allow-flight=true" >> /home/$USER/minecraft/server.properties
-echo "view-distance=32" >> /home/$USER/minecraft/server.properties
-echo "online-mode=true" >> /home/$USER/minecraft/server.properties
-echo "use-native-transport=true" >> /home/$USER/minecraft/server.properties
-echo "motd=A Minecraft server... I guess" >> /home/$USER/minecraft/server.properties
+echo "
+spawn-protection=0
+difficulty=normal
+enable-command-block=true
+server-port=42069
+allow-flight=true
+view-distance=32
+online-mode=true
+use-native-transport=true
+motd=A Minecraft server... I guess" >> /home/$USER/minecraft/server.properties
 # start.sh
 echo "java -Xms${HEAP_SIZE}M -Xmx${HEAP_SIZE}M $JAVA_ARGS -jar server.jar" >> /home/$USER/minecraft/start.sh
 chmod 777 /home/$USER/minecraft/start.sh
