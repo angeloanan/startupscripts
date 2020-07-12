@@ -28,6 +28,18 @@ ufw allow 22 # SSH
 ufw allow 42069 # Minecraft
 ufw enable
 
+# Create 2 GB swapfile at /swapfile
+fallocate -l 2G /swapfile
+chmod 600 /swapfile
+
+mkswap /swapfile
+swapon /swapfile
+echo '/swapfile none swap sw 0 0' | tee -a /etc/fstab
+
+# Adjust vm.swappiness
+sysctl vm.swappiness=0
+echo "vm.swappiness=10" | tee -a /etc/sysctl.conf
+
 # -----
 # Minecraft
 mkdir -p /home/$USER/minecraft
