@@ -10,9 +10,11 @@
 
 # You may modify these variables
 USER="angelo"
-PACKAGES="sudo curl wget ufw openjdk-11-jre-headless htop screen"
-JAVAARGS="-Xmx3.5G -Xms3.5G"
+PACKAGES="sudo curl wget ufw openjdk-11-jre-headless htop screen zip unzip"
+
 SERVERJARLINK="https://launcher.mojang.com/v1/objects/a412fd69db1f81db3f511c1463fd304675244077/server.jar" # 1.16.1 | https://mcversions.net
+HEAP_SIZE=2048
+JAVA_ARGS=""
 
 # Code starts here. Do not modify unless you know what's up!
 
@@ -44,5 +46,5 @@ echo "online-mode=true" >> /home/$USER/minecraft/server.properties
 echo "use-native-transport=true" >> /home/$USER/minecraft/server.properties
 echo "motd=A Minecraft server... I guess" >> /home/$USER/minecraft/server.properties
 # start.sh
-echo "java $JAVAARGS -jar server.jar" >> /home/$USER/minecraft/start.sh
+echo "java -Xms${HEAP_SIZE}M -Xmx${HEAP_SIZE}M $JAVA_ARGS -jar server.jar" >> /home/$USER/minecraft/start.sh
 chmod 777 /home/$USER/minecraft/start.sh
